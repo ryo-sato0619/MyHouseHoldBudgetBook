@@ -1,4 +1,13 @@
 ﻿Public Class mainForm
+    Private userName As String
+    Private authority As Boolean
+
+    'ログインフォームからログイン者の情報を受け取る
+    Public Sub New(ByVal name As String, ByVal autho As Boolean)
+        InitializeComponent()
+        userName = name
+        authority = autho
+    End Sub
     Private Sub dgv_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellContentClick
 
     End Sub
@@ -123,7 +132,7 @@
             = Integer.Parse(dgv.Rows(nowRow).Cells(3).Value.ToString())
         Dim oldRemarks As String = dgv.Rows(nowRow).Cells(4).Value.ToString()
         '6つの引数を渡してインスタンスを生成
-        Dim frmItem As itemForm = New itemForm(CategoryDataSet1, oldDate, oldcategory, olditem, oldMoney, oldRemarks)
+        Dim frmItem As itemForm = New itemForm(CategoryDataSet1, oldDate, oldcategory, oldItem, oldMoney, oldRemarks)
         Dim drRet As DialogResult = frmItem.ShowDialog
         '登録画面でOK選択時
         If drRet = DialogResult.OK Then
